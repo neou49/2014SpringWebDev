@@ -5,6 +5,8 @@
 
 	@$view = $action = $_REQUEST['action'];
 	@$format = $_REQUEST['format'];
+	
+
 
 	switch ($action){
 		case 'create':
@@ -28,4 +30,17 @@
 			break;
 	}
 	
+/* FOR SERVER USAGE: RETURN USEDFUL INFORMATION ABOUT THE TRAFFICE INFO....DETAILS STUFF
+	?> <pre>
+		<? print_r($_SERVER); ?>
+	</pre>
+	
+	?> <pre>
+		<? print_r($_GET); ?>
+	</pre>
+	
+	?> <pre>
+		<? print_r($_REQUEST); ?>
+	</pre>
 
+*/
