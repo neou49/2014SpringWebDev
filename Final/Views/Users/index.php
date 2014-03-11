@@ -8,6 +8,9 @@
 		List of Users
 	</h2>
 	</link>
+	
+	<a ref ="?action=new">Create New </a>
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -16,6 +19,7 @@
 				<th>Password</th>
 				<th>fbid</th>
 				<th>UserType</th>
+			<!--	<th>UserType_Name</th> -->
 			</tr>
 		</thead>
 		
@@ -26,8 +30,7 @@
 					<td><?=$row['LastName']?></td>
 					<td><?=$row['Password']?></td>
 					<td><?=$row['fbid']?></td>
-					<td><?=$row['UserType']?></td>
-					
+					<td><?=$row['UserType_Name']?></td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>

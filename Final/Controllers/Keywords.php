@@ -12,8 +12,8 @@
 		case 'delete':
 			break;		
 		default:
-			$model = Users::Get();
+			$model = Keywords::Get();
 			if ($action == null) $action = 'index';
-			include	__DIR__ . "/../Views/Users/$action.php";
+			include	__DIR__ . "/../Views/Keywords/$action.php";
 			break;
 	}

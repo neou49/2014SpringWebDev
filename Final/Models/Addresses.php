@@ -8,7 +8,7 @@
 		{
 			if ($id == null){
 				// Get all records
-				return fetch_all("SELECT * FROM 2014Spring_Addreses");
+				return fetch_all("SELECT * FROM 2014Spring_Addresses");
 			}else{
 				// Get one record
 			}

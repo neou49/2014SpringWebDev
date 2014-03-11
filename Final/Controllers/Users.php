@@ -6,17 +6,22 @@
 	@$view = $action = $_REQUEST['action'];
 	@$format = $_REQUEST['format'];
 	
-
-
 	switch ($action){
-		case 'create':
+		case 'new':
+			$view = 'edit';
 			break;
-		case 'update':
+		case 'edit':
+			break;
+		case 'save':
+			// TODO: Validate()
+			USER::Create($_REQUEST);
+			$view = 'edit';
 			break;
 		case 'delete':
 			break;
 		default:
 			$model = Users::Get();
+			/* Debug ?> <pre> <? print_r($model) ?> </pre> <? */
 			if($view == null) $view = 'index';
 	}
 
