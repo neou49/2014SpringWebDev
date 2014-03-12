@@ -8,7 +8,8 @@
 		{
 			if ($id == null){
 				// Get all records
-				return fetch_all("SELECT * FROM 2014Spring_Keywords");
+				return fetch_all("SELECT P.id AS PID, P.Name AS Parent_Keyword, C.id AS CID, C.Name AS Child_Keyword 
+									FROM 2014Spring_Keywords P JOIN 2014Spring_Keywords C ON P.id = C.Parent_id; ");
 			}else{
 				// Get one record
 			}

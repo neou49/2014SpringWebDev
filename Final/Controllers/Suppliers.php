@@ -1,19 +1,36 @@
 <?php
 	include_once __DIR__ . '/../inc/functions.php';	
-	include_once __DIR__ . '/../inc/allModels.php';
+	include_once __DIR__ . '/../inc/allModels.php';	
+
+	@$view = $action = $_REQUEST['action'];
+	@$format = $_REQUEST['format'];
 	
-	@$action = $_REQUEST['action'];
-	
-	switch(@$action){
-		case 'create':
+	switch ($action){
+		case 'new':
+			$view = 'edit';
 			break;
-		case 'update':
+		case 'edit':
+			break;
+		case 'save':
+			// TODO: Validate()
+			Suppliers::Create($_REQUEST);
+			$view = 'edit';
 			break;
 		case 'delete':
-			break;		
+			break;
 		default:
 			$model = Suppliers::Get();
-			if ($action == null) $action = 'index';
-			include	__DIR__ . "/../Views/Suppliers/$action.php";
+			/* Debug ?> <pre> <? print_r($model) ?> </pre> <? */
+			if($view == null) $view = 'index';
+	}
+
+	switch ($format) {
+		case 'plain':
+			include __DIR__ . "/../Views/Suppliers/$view.php";			
+			break;
+		default:
+			$view = __DIR__ . "/../Views/Suppliers/$view.php";	
+			include __DIR__ . "/../Views/Shared/_Layout.php";
 			break;
 	}
+	

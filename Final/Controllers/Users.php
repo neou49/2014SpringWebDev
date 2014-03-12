@@ -14,7 +14,7 @@
 			break;
 		case 'save':
 			// TODO: Validate()
-			USER::Create($_REQUEST);
+			Users::Create($_REQUEST);
 			$view = 'edit';
 			break;
 		case 'delete':

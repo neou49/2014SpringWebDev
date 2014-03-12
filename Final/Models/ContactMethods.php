@@ -8,7 +8,9 @@
 		{
 			if ($id == null){
 				// Get all records
-				return fetch_all("SELECT * FROM 2014Spring_ContactMethods");
+				return fetch_all("SELECT U.FirstName, U.LastName, K.Name as Contact_Method_Name, C.Value 
+									FROM 2014Spring_Users U JOIN 2014Spring_ContactMethods C ON U.id = C.User_id
+									JOIN 2014Spring_Keywords K ON C.ContactMethodType = K.id;");
 			}else{
 				// Get one record
 			}
