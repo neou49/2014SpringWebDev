@@ -9,7 +9,7 @@
 	</h2>
 	</link>
 	
-	<a ref ="?action=new">Create New </a>
+	<a href ="?action=new">Create New</a>
 	
 	<table class="table">
 		<thead>
@@ -19,7 +19,7 @@
 				<th>Password</th>
 				<th>fbid</th>
 				<th>UserType</th>
-			<!--	<th>UserType_Name</th> -->
+				<th>Edit</th>
 			</tr>
 		</thead>
 		
@@ -31,6 +31,9 @@
 					<td><?=$row['Password']?></td>
 					<td><?=$row['fbid']?></td>
 					<td><?=$row['UserType_Name']?></td>
+					<td>
+						<a href="Users.php?action=edit&id=<?=$row['id']?>">Edit</a>
+					</td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>
