@@ -19,7 +19,7 @@
 				<th>Password</th>
 				<th>fbid</th>
 				<th>UserType</th>
-				<th>Edit</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		

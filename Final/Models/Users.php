@@ -45,6 +45,8 @@
 		static public function Save($row)
 		{
 			$conn = GetConnection();
+			// print_r($row);
+			// die();
 			
 			if (isset($row['id'])){
 				$sql = "UPDATE 2014Spring_Users
@@ -55,10 +57,11 @@
 							UserType = '$row[UserType]'
 						WHERE id = '$row[id]'
 							";
-			}
+			} else {
 			$sql = "INSERT INTO 2014Spring_Users 
 					(FirstName, LastName, Password, fbid, UserType) 
 					VALUES('$row[FirstName]', '$row[LastName]', '$row[Password]','$row[fbid]','$row[UserType]')";
+			}
 			//echo $sql;
 			$result = $conn->query($sql);
 			$error = $conn->error;
@@ -87,6 +90,10 @@
 		
 		static public function Validate($row)
 		{
-			
+			$errors = array();
+			if (empty($row['FirstName'])) $errors['FirstName'] = "is required";
+			if (empty($row['LastName'])) $errors['LastName'] = "is required";
+			if (!is_numeric(($row['FirstName']))) $errors['UserType'] = "must be a number";
+			if (empty($row['UserType'])) $errors['UserType'] = "is required";
 		}
 	}
