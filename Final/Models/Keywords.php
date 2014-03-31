@@ -3,6 +3,13 @@
 	
 	// C.R.U.D: Create Read Update Delete
 	class Keywords {
+		
+		 static public function SelectionListFor($TypeId)
+		{
+			$sql = "SELECT id, Name FROM 2014Spring_Keywords WHERE Parent_id = $TypeId";
+			return fetch_all($sql);
+		}
+		
 		// Read
 		static public function Get($id = null)
 		{
@@ -14,6 +21,7 @@
 				// Get one record
 			}
 		}
+		
 		
 		// Create
 		static public function Create($row)

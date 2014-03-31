@@ -18,7 +18,9 @@
 			//if (!$errors = Users::Create($_REQUEST)){
 			$errors = Users::Validate($_REQUEST);
 			
+			
 			if(!$errors){
+				
 				$errors = Users::Save($_REQUEST);
 			}
 			if (!$errors){
@@ -29,8 +31,8 @@
 				print_r($errors);
 				$model = $_REQUEST;
 				$view = 'edit';
-			}
-			$view = 'edit';
+			}			
+			$view = 'edit';			
 			break;
 		case 'delete':
 			break;

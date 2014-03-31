@@ -44,11 +44,11 @@
 		// Save 
 		static public function Save($row)
 		{
-			$conn = GetConnection();
-			// print_r($row);
-			// die();
-			
-			if (isset($row['id'])){
+			$conn = GetConnection();			
+
+			$row = escape_all($row, $conn);			
+							
+			if (!empty($row['id'])){
 				$sql = "UPDATE 2014Spring_Users
 						SET FirstName = '$row[FirstName]',
 							LastName = '$row[LastName]',
@@ -56,14 +56,16 @@
 							fbid = '$row[fbid]',
 							UserType = '$row[UserType]'
 						WHERE id = '$row[id]'
-							";
+							";			
 			} else {
 			$sql = "INSERT INTO 2014Spring_Users 
 					(FirstName, LastName, Password, fbid, UserType) 
 					VALUES('$row[FirstName]', '$row[LastName]', '$row[Password]','$row[fbid]','$row[UserType]')";
 			}
+							
 			//echo $sql;
 			$result = $conn->query($sql);
+
 			$error = $conn->error;
 			$conn->close();
 		
@@ -93,7 +95,10 @@
 			$errors = array();
 			if (empty($row['FirstName'])) $errors['FirstName'] = "is required";
 			if (empty($row['LastName'])) $errors['LastName'] = "is required";
-			if (!is_numeric(($row['FirstName']))) $errors['UserType'] = "must be a number";
+			
+			if (!is_numeric(($row['UserType']))) $errors['UserType'] = "must be a number";
 			if (empty($row['UserType'])) $errors['UserType'] = "is required";
+			
+			return count($errors) > 0 ? $errors : false ;
 		}
 	}
