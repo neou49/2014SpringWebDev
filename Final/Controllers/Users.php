@@ -35,6 +35,12 @@
 			$view = 'edit';			
 			break;
 		case 'delete':
+			if($_SERVER['REQUEST_METHOD'] == 'GET'){
+				// Prompt
+				$model = Users::Get($_REQUEST['id']);
+			}else{
+				Users::Delete($_REQUEST['id']);
+			}
 			break;
 		default:
 			$model = Users::Get();
@@ -43,6 +49,10 @@
 	}
 
 	switch ($format) {
+		case 'json':
+			$ret = array('success' => empty($errors), 'errors' => $errors, 'data' => $model);
+			echo json_encode($ret) ;
+			break;
 		case 'plain':
 			include __DIR__ . "/../Views/Users/$view.php";			
 			break;
