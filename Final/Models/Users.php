@@ -42,31 +42,35 @@
 		}
 		
 		// Save 
-		static public function Save($row)
+		static public function Save(&$row)
 		{
 			$conn = GetConnection();			
 
-			$row = escape_all($row, $conn);			
+			$row2 = escape_all($row, $conn);			
 							
 			if (!empty($row['id'])){
 				$sql = "UPDATE 2014Spring_Users
-						SET FirstName = '$row[FirstName]',
-							LastName = '$row[LastName]',
-							Password = '$row[Password]',
-							fbid = '$row[fbid]',
-							UserType = '$row[UserType]'
-						WHERE id = '$row[id]'
+						SET FirstName = '$row2[FirstName]',
+							LastName = '$row2[LastName]',
+							Password = '$row2[Password]',
+							fbid = '$row2[fbid]',
+							UserType = '$row2[UserType]'
+						WHERE id = '$row2[id]'
 							";			
 			} else {
 			$sql = "INSERT INTO 2014Spring_Users 
 					(FirstName, LastName, Password, fbid, UserType) 
-					VALUES('$row[FirstName]', '$row[LastName]', '$row[Password]','$row[fbid]','$row[UserType]')";
+					VALUES('$row2[FirstName]', '$row2[LastName]', '$row2[Password]','$row2[fbid]','$row2[UserType]')";
 			}
 							
 			//echo $sql;
 			$result = $conn->query($sql);
 
 			$error = $conn->error;
+			
+			if (!$error && empty($row['id'])){
+				$row['id'] = $conn->insert_id;
+			}
 			$conn->close();
 		
 			//return true;

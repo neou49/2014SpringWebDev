@@ -14,7 +14,7 @@
 			$model = Users::Get($_REQUEST['id']);
 			break;
 		case 'save':
-			
+			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
 			//if (!$errors = Users::Create($_REQUEST)){
 			$errors = Users::Validate($_REQUEST);
 			
@@ -24,7 +24,7 @@
 				$errors = Users::Save($_REQUEST);
 			}
 			if (!$errors){
-				header("Location: ?");
+				header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
 				die();
 				// echo "Sucess";
 			}else {
