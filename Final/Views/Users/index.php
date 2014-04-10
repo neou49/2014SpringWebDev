@@ -1,9 +1,5 @@
-<!-- <pre>
-	<? print_r($model); ?>
-</pre>
--->
-
 	<?
+		include __DIR__ . "/../../inc/jsFunctions.php";
 		@$id = $_REQUEST['id'];
 	?>
 	
@@ -67,8 +63,3 @@
 		</thead>
 			
 	</table>
-	
-	<? 
-		include __DIR__ . "/../../inc/jsFunctions.php";
-	?>
-	

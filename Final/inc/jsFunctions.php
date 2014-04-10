@@ -15,7 +15,8 @@
 			 		event.preventDefault();
 			 		// $.get(url, data, callbackfunction, '')
 			 		$.get(that.href, function(results){
-			 			if (confirm("Are you sure you want to delete " + results.data.FirstName + " " + results.data.LastName + "?")){
+			 			// if (confirm("Are you sure you want to delete " + results.data.FirstName + " " + results.data.LastName + "?")){
+		 				if (confirm("Are you sure you want to delete " + results.data.Header + "?")){
 			 				$.post(that.href, function(data){
 			 					if(data.success){
 			 						// message user success

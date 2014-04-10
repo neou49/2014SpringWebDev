@@ -6,7 +6,7 @@
 		// Read
 		static public function Get($id = null)
 		{
-			$sql = "SELECT U.*, K.Name as UserType_Name 
+			$sql = "SELECT U.*, K.Name as UserType_Name, CONCAT(U.FirstName,' ',U.LastName) as Header 
 					FROM 2014Spring_Users U JOIN 2014Spring_Keywords K ON U.UserType = K.id
 					";
 			if ($id == null){
