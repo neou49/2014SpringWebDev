@@ -1,3 +1,4 @@
 <?
-	include __DIR__ . "SharedController.php";
+	$controllerName = 'Products';
+	include 'SharedController.php';
 ?>

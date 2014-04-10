@@ -1,3 +1,3 @@
 <?
-	include __DIR__ . "SharedController.php";
+	include 'SharedController.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
-	$controllerName = "Users";
-	include  "SharedController.php";
+	$controllerName = 'Users';
+	include  'SharedController.php';
 ?>
 
 <?	
