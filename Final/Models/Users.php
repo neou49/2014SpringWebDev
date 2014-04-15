@@ -9,43 +9,23 @@
 			$sql = "SELECT U.*, K.Name as UserType_Name, CONCAT(U.FirstName,' ',U.LastName) as Header 
 					FROM 2014Spring_Users U JOIN 2014Spring_Keywords K ON U.UserType = K.id
 					";
-			if ($id == null){
-				// Get all records
-				//return fetch_all("SELECT * FROM 2014Spring_Users");
-				return fetch_all($sql);
-			}else{
-				// Get one record
-				$sql .= " WHERE U.id = $id ";
-				if (($results = fetch_all($sql)) && (count($results) > 0)){
-					return $results[0];
-				}else{
-					return null;
-				}
-				
+			return CheckIdBeforeFetchAll($sql, $id);
 			}
-		}
 		
 		// Create
 		static public function Create($row)
 		{
-			$conn = GetConnection();
 			$sql = "INSERT INTO 2014Spring_Users 
 					(FirstName, LastName, Password, fbid, UserType) 
 					VALUES('$row[FirstName]', '$row[LastName]', '$row[Password]','$row[fbid]','$row[UserType]')";
-			//echo $sql;
-			$result = $conn->query($sql);
-			$error = $conn->error;
-			$conn->close();
-		
-			//return true;
-			return $error ? array('sql error' => $error) : false;
+			return ValidateSqlQuery($sql, __METHOD__);		
 		}
 		
 		// Save 
 		static public function Save(&$row)
 		{
-			$conn = GetConnection();			
-
+			$conn = GetConnection();
+			
 			$row2 = escape_all($row, $conn);			
 							
 			if (!empty($row['id'])){
@@ -62,19 +42,9 @@
 					(FirstName, LastName, Password, fbid, UserType) 
 					VALUES('$row2[FirstName]', '$row2[LastName]', '$row2[Password]','$row2[fbid]','$row2[UserType]')";
 			}
-							
-			//echo $sql;
-			$result = $conn->query($sql);
-
-			$error = $conn->error;
-			
-			if (!$error && empty($row['id'])){
-				$row['id'] = $conn->insert_id;
-			}
-			$conn->close();
+				
+			return ValidateSqlQuery($sql, __METHOD__, $row);		
 		
-			//return true;
-			return $error ? array('sql error' => $error) : false;
 		}
 		
 		
@@ -90,16 +60,11 @@
 		}
 		
 		static public function Delete($id)
-		{
-			$conn = GetConnection();
-			
+		{			
 			$sql = "DELETE FROM 2014Spring_Users WHERE id = $id";
-			//echo $sql;
-			$result = $conn->query($sql);
-			$error = $conn->error;
-			$conn->close();
-		
-			return $error ? array('sql error' => $error) : false;
+			
+			return ValidateSqlQuery($sql, __METHOD__);
+			
 		}
 		
 		static public function Validate($row)

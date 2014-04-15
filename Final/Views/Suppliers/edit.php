@@ -1,5 +1,8 @@
+  <div class="modal-header">
+    <a href="?" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+    <h4 class="modal-title"><?=ucfirst($action)?>: <?=$model['Name']?></h4>
+  </div>
 
-<h2><?=ucfirst($action)?>: <?=$model['Name']?> </h2>
 
 	<ul class="error">
 		<? foreach ($errors as $key => $value): ?>

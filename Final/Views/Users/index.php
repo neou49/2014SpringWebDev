@@ -46,6 +46,7 @@
 					<td><?=$row['UserType_Name']?></td>
 					<td>
 						<div class="btn-group">
+							<!-- <a class="btn btn-sm btn-default glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal" title="Edit" href="?action=edit&id=<?=$row['id']?>"></a> -->
 							<a class="btn btn-sm btn-default glyphicon glyphicon-edit" title="Edit" href="?action=edit&id=<?=$row['id']?>"></a>
 							<a class="btn btn-sm btn-default glyphicon glyphicon-eye-open" title="Details" href="?action=edit&id=<?=$row['id']?>"></a>
 							<a class="btn btn-sm btn-default glyphicon glyphicon-trash" title="Delete" href="?action=delete&format=json&id=<?=$row['id']?>"></a>
@@ -63,3 +64,7 @@
 		</thead>
 			
 	</table>
+	
+
+
+

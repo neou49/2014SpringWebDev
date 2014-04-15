@@ -1,5 +1,8 @@
+  <div class="modal-header">
+    <a href="?" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+    <h4 class="modal-title"><?=ucfirst($action)?>: <?=$model['FirstName']?> <?=$model['LastName']?></h4>
+  </div>
 
-<h2><?=ucfirst($action)?>: <?=$model['FirstName']?> <?=$model['LastName']?></h2>
 
 	<ul class="error">
 		<? foreach ($errors as $key => $value): ?>
@@ -61,8 +64,13 @@
 		<? endif ?>
 	</div>
 	
-	<label class="control-label"></label>
-	<input class="btn btn-primary" type="submit" value="Save" />
+	<div class="modal-footer">		
+		<button type="Save" class="btn btn-primary">Save</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	</div>
+	      
+	<!-- <label class="control-label"></label>
+	<input class="btn btn-primary" type="submit" value="Save" /> -->
 </form>
 
 	<? function JavaScripts(){ global $model; ?>

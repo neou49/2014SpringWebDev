@@ -27,6 +27,22 @@
 		return $arr;
 	}
 	
+	function CheckIdBeforeFetchAll($sql, $id = null)
+	{
+		if ($id == null){
+			// Get all records
+			return fetch_all($sql);
+		}else{
+			// Get one record
+			$sql .= " WHERE U.id = $id ";
+			if (($results = fetch_all($sql)) && (count($results) > 0)){
+				return $results[0];
+			}else{
+				return null;
+			}	
+		}			
+	}
+	
 	function escape_all($row, $conn)
 	{
 		$row2 = array();
@@ -36,6 +52,26 @@
 		
 		return $row2;
 		
+	}
+	
+	function ValidateSqlQuery($sql, $methodName, $row = null)
+	{
+		$conn = GetConnection();
+		//echo $sql;
+		$result = $conn->query($sql);
+
+		$error = $conn->error;
+		
+		if ($methodName = 'save'){
+			if (!$error && empty($row['id'])){
+				$row['id'] = $conn->insert_id;
+			}
+		}
+				
+		$conn->close();
+	
+		//return true;
+		return $error ? array('sql error' => $error) : false;
 	}
 	
 	function Get($controllerName, $request = null)
@@ -179,6 +215,7 @@
 		}
 		return $results;
 	}
-	//$conn = GetConnection();
-	//print_r($conn);
-	//print_r('test');
+	
+	// $conn = GetConnection();
+	// print_r($conn);
+	// print_r('test');

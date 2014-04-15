@@ -17,10 +17,7 @@
 		case 'save':
 			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
 		
-			// $errors = Users::Validate($_REQUEST);	
-			
-			print_r('before validate');
-					
+			// $errors = Users::Validate($_REQUEST);						
 			$errors = Validate($controllerName, $_REQUEST);	
 			if(!$errors){
 				

@@ -30,7 +30,19 @@
 			 			}
 			 		}, 'json')
 			 	});
-			})			
+			 	
+			 	$(".glyphicon-edit, .cmd-new").click(function(event){
+			 		var that = this;
+			 		event.preventDefault();
+			 		
+			 		$.get(that.href, { format: 'plain'}, function(data){
+			 			var $myModal = $("#myModal");
+			 			$(".modal-content", $myModal).html(data);
+			 			$myModal.modal('show');
+			 		})
+			 		
+			 	});
+		 	})
 		</script>
 	<? } ?>
 

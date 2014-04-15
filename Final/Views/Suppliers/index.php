@@ -8,11 +8,11 @@
 		List of Suppliers
 	</h2>
 	
-	<style type="text/css">
+	<!-- <style type="text/css">
 		body table.table .highlighted{
 			background-color: #FFFFAA;
 		}
-	</style>
+	</style> -->
 	
 	<? if(isset($_REQUEST['sub_action'])): ?>
 		<div class="alert alert-success">
@@ -56,3 +56,4 @@
 		</thead>
 			
 	</table>
+	

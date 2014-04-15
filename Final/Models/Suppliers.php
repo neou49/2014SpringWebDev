@@ -7,41 +7,22 @@
 		static public function Get($id = null)
 		{
 			$sql = "SELECT *, Name as Header FROM 2014Spring_Suppliers ";
-			if ($id == null){
-				// Get all records
-				return fetch_all($sql);
-			}else{
-				// Get one record
-				$sql .= " WHERE id = $id ";
-				if (($results = fetch_all($sql)) && (count($results) > 0)){
-					return $results[0];
-				}else{
-					return null;
-				}
-			}
+			return CheckIdBeforeFetchAll($sql, $id);
 		}
 		
 		// Create
 		static public function Create($row)
 		{
-			$conn = GetConnection();
 			$sql = "INSERT INTO 2014Spring_Suppliers 
 					(Name) 
-					VALUES('$row[Name]')";
-			//echo $sql;
-			$result = $conn->query($sql);
-			$error = $conn->error;
-			$conn->close();
-		
-			//return true;
-			return $error ? array('sql error' => $error) : false;
+					VALUES('$row[Name]')";		
 		}
 		
 		// Save 
 		static public function Save(&$row)
 		{
-			$conn = GetConnection();			
-
+			$conn = GetConnection();
+				
 			$row2 = escape_all($row, $conn);			
 							
 			if (!empty($row['id'])){
@@ -55,18 +36,7 @@
 					VALUES('$row2[Name]')";
 			}
 							
-			//echo $sql;
-			$result = $conn->query($sql);
-
-			$error = $conn->error;
-			
-			if (!$error && empty($row['id'])){
-				$row['id'] = $conn->insert_id;
-			}
-			$conn->close();
-		
-			//return true;
-			return $error ? array('sql error' => $error) : false;
+			return ValidateSqlQuery($sql, __METHOD__, $row);	
 		}
 		
 		
@@ -84,16 +54,9 @@
 		
 		// Delete
 		static public function Delete($id)
-		{
-			$conn = GetConnection();
-			
+		{			
 			$sql = "DELETE FROM 2014Spring_Suppliers WHERE id = $id";
-			//echo $sql;
-			$result = $conn->query($sql);
-			$error = $conn->error;
-			$conn->close();
-		
-			return $error ? array('sql error' => $error) : false;
+			return ValidateSqlQuery($sql, __METHOD__);	
 		}
 		
 		// Validate
