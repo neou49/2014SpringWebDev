@@ -5,6 +5,7 @@
 
 	@$view = $action = $_REQUEST['action'];
 	@$format = $_REQUEST['format'];
+	@$id = $_REQUEST['id'];
 	
 	switch ($action){
 		case 'new':
@@ -12,10 +13,10 @@
 			break;
 		case 'edit':
 			// $model = Users::Get($_REQUEST['id']);
-			$model = Get($controllerName, $_REQUEST['id']);
+			$model = Get($controllerName, $id);
 			break;
 		case 'save':
-			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
+			$sub_action = empty($id) ? 'created' : 'updated';
 		
 			// $errors = Users::Validate($_REQUEST);						
 			$errors = Validate($controllerName, $_REQUEST);	
@@ -39,18 +40,30 @@
 			if($_SERVER['REQUEST_METHOD'] == 'GET'){
 				// Prompt
 				// $model = Users::Get($_REQUEST['id']);
-				$model = Get($controllerName, $_REQUEST['id']);
+				$model = Get($controllerName, $id);
 			}else{
 				// Users::Delete($_REQUEST['id']);
-				Delete($controllerName, $_REQUEST['id']);
+				Delete($controllerName, $id);
 			}
 			break;
-		default:
+		case 'index':
 			// $model = Users::Get();
 			$model = Get($controllerName);
+			break;
+		default:
+			
 			/* Debug ?> <pre> <? print_r($model) ?> </pre> <? */
 			/*Debug ?> <pre> <? print_r($controllerName) ?> </pre> <? */
-			if($view == null) $view = 'index';
+			
+			if($view == null) 
+			{
+				if ($controllerName == 'Products') $view = 'home';
+				else 
+				{
+					$view = 'index';
+					$model = Get($controllerName);
+				}
+			}
 	}
 
 	switch ($format) {
