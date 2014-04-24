@@ -19,7 +19,7 @@
 		static public function Create($row)
 		{
 			$sql = "INSERT INTO 2014Spring_Products 
-					(FirstName, LastName, Password, fbid, UserType) 
+					(Supplier_id, Name, Price, Description, Picture_Url, Category_Keyword_id) 
 					VALUES('$row[Supplier_id]', '$row[Name]', '$row[Price]','$row[Description]','$row[Picture_Url]','$row[Category_Keyword_id]'))";
 			
 			return ValidateSqlQuery($sql, __METHOD__);		
@@ -34,17 +34,17 @@
 							
 			if (!empty($row['id'])){
 				$sql = "UPDATE 2014Spring_Products
-						SET FirstName = '$row2[Supplier_id]',
-							LastName = '$row2[Name]',
-							Password = '$row2[Price]',
-							fbid = '$row2[Description]',
-							UserType = '$row2[Pricture_Url]'
-							UserType = '$row2[Category_Keyword_id]'
+						SET Supplier_id = '$row2[Supplier_id]',
+							Name = '$row2[Name]',
+							Price = '$row2[Price]',
+							Description = '$row2[Description]',
+							Pricture_Url = '$row2[Pricture_Url]'
+							Category_Keyword_id = '$row2[Category_Keyword_id]'
 						WHERE id = '$row2[id]'
 							";			
 			} else {
 			$sql = "INSERT INTO 2014Spring_Users 
-					(FirstName, LastName, Password, fbid, UserType) 
+					(Supplier_id, Name, Price, Description, Picture_Url, Category_Keyword_id) 
 					VALUES('$row2[Supplier_id]', '$row2[Name]', '$row2[Price]','$row2[Description]','$row2[Picture_Url]','$row2[Category_Keyword_id]')";
 			}
 							
