@@ -6,6 +6,7 @@
 	@$view = $action = $_REQUEST['action'];
 	@$format = $_REQUEST['format'];
 	@$id = $_REQUEST['id'];
+	$layout		= '_Layout';
 	
 	switch ($action){
 		case 'new':
@@ -57,7 +58,11 @@
 			
 			if($view == null) 
 			{
-				if ($controllerName == 'Products') $view = 'home';
+				if ($controllerName == 'Products')
+				{
+					$layout = '_PublicLayout';
+					$view = 'home';
+				}
 				else 
 				{
 					$view = 'index';
@@ -76,6 +81,6 @@
 			break;
 		default:
 			$view = __DIR__ . "/../Views/$controllerName/$view.php";	
-			include __DIR__ . "/../Views/Shared/_Layout.php";
+			include __DIR__ . "/../Views/Shared/$layout.php";
 			break;
 	}

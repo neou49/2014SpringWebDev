@@ -18,7 +18,7 @@
 
 	<header class="jumbotron">
 		<div class="container">
-			<h1 class="glyphicon glyphicon-tower">The M-Store</h1>		
+			<h1 class="glyphicon glyphicon-leaf">TheSeng.Store</h1>		
 		</div>
 	</header>
 
@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">eCommerce Project</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">

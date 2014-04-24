@@ -1,3 +1,3 @@
 <?
-	include  'Users.php';
+	include  'Products.php';
 ?>
