@@ -1,18 +1,21 @@
 <?php
 	include_once __DIR__ . '/../inc/functions.php';
 	
+	$all_categories = 21;
+	
 	// C.R.U.D: Create Read Update Delete
 	class Products {
 		
 		// Read
-		static public function Get($id = null)
+		static public function Get($id = null, $category_id = null)
 		{
 			$sql = "SELECT P.*, S.Name as Supplier_Name, K.Name as Category_Name, P.Name AS Header FROM 
 					(2014Spring_Products P JOIN 2014Spring_Suppliers S ON P.Supplier_id = S.id) 
 					JOIN 2014Spring_Keywords K ON P.Category_Keyword_id = K.id
 					";
-			return CheckIdBeforeFetchAll($sql, $id);				
 			
+			return CheckIdBeforeFetchAll($sql, $id, $category_id);
+		
 		}
 		
 		// Create

@@ -27,12 +27,11 @@
 		return $arr;
 	}
 	
-	function CheckIdBeforeFetchAll($sql, $id = null)
+	function CheckIdBeforeFetchAll($sql, $id = null, $category_id = null)
 	{
-		if ($id == null){
-			// Get all records
-			return fetch_all($sql);
-		}else{
+	
+		if($id)
+		{
 			// Get one record
 			$sql .= " WHERE U.id = $id ";
 			if (($results = fetch_all($sql)) && (count($results) > 0)){
@@ -40,7 +39,13 @@
 			}else{
 				return null;
 			}	
-		}			
+		}elseif($category_id){
+				$sql .= " WHERE Category_Keyword_id = $category_id ";
+				return fetch_all($sql);
+		}else{
+			//	Get all records
+			return fetch_all($sql);
+		}		
 	}
 	
 	function escape_all($row, $conn)
@@ -74,35 +79,35 @@
 		return $error ? array('sql error' => $error) : false;
 	}
 	
-	function Get($controllerName, $request = null)
+	function Get($controllerName, $request = null, $category_id = null)
 	{
 		switch($controllerName){
 			case 'Users':
-				$results = Users::Get($request);
+				$results = Users::Get($request, $category_id);
 				break;
 			case 'Suppliers':
-				$results = Suppliers::Get($request);
+				$results = Suppliers::Get($request, $category_id);
 				break;
 			case 'Products':
-				$results = Products::Get($request);
+				$results = Products::Get($request, $category_id);
 				break;
 			case 'ProductKeywords':
-				$results = ProductKeywords::Get($request);
+				$results = ProductKeywords::Get($request, $category_id);
 				break;
 			case 'Orders':
-				$results = Orders::Get($request);
+				$results = Orders::Get($request, $category_id);
 				break;
 			case 'OrderItems':
-				$results = OrderItems::Get($request);
+				$results = OrderItems::Get($request, $category_id);
 				break;
 			case 'Keywords':
-				$results = Keywords::Get($request);
+				$results = Keywords::Get($request, $category_id);
 				break;
 			case 'ContactMethods':
-				$results = ContactMethods::Get($request);
+				$results = ContactMethods::Get($request, $category_id);
 				break;
 			case 'Addresses':
-				$results = Addresses::Get($request);
+				$results = Addresses::Get($request, $category_id);
 				break;
 		}
 		return $results;

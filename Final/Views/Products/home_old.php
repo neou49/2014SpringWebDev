@@ -24,7 +24,7 @@
 </script>
 
 
-	<!-- <div id="shopping-cart-list" class="closed" >
+	<div id="shopping-cart-list" class="closed" >
 		<div class="scrolling"  data-bind="foreach: cart" >
 			<div class="well well-sm clearfix">
 				<img alt="item image" data-bind="attr: {src: Picture_Url}" />
@@ -40,9 +40,9 @@
 		<div>
 			Total: $ <span data-bind="text: cartTotal"></span>
 		</div>
-	</div> -->
+	</div>
 	
-<!-- <script type="text/template" id="cart-tmpl">
+<script type="text/template" id="cart-tmpl">
 	<ul class="nav navbar-nav navbar-right ">
 		<li>
 			<button class="navbar-btn btn" data-bind="click: toggleCartList">
@@ -53,7 +53,7 @@
 		</li>
 		<li><a></a></li>
 	</ul>
-</script> -->
+</script>
 
 	<? function JavaScripts(){  ?>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.2/handlebars.min.js"></script>

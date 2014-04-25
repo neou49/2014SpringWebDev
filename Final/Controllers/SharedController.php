@@ -5,6 +5,7 @@
 
 	@$view = $action = $_REQUEST['action'];
 	@$format = $_REQUEST['format'];
+	@$category_id = $_REQUEST['category_id'];
 	@$id = $_REQUEST['id'];
 	$layout		= '_Layout';
 	
@@ -48,8 +49,12 @@
 			}
 			break;
 		case 'index':
+			// $model = Users::Get();			
+			$model = Get($controllerName, null, $category_id);			
+			break;
+		case 'categories':
 			// $model = Users::Get();
-			$model = Get($controllerName);
+			$model = Keywords::SelectionListFor($category_id);
 			break;
 		default:
 			
@@ -66,7 +71,7 @@
 				else 
 				{
 					$view = 'index';
-					$model = Get($controllerName);
+					$model = Get($controllerName, null, $category_id);
 				}
 			}
 	}
