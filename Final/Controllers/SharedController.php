@@ -7,8 +7,13 @@
 	@$format = $_REQUEST['format'];
 	@$category_id = $_REQUEST['category_id'];
 	@$id = $_REQUEST['id'];
-	$layout		= '_Layout';
-	
+	$layout		= '_Layout';	
+
+	if ($controllerName == 'Users')
+	{			
+		print_r($controllerName);	
+		Accounts::RequireLogin();
+	}
 	switch ($action){
 		case 'new':
 			$view = 'edit';
@@ -39,6 +44,9 @@
 			$view = 'edit';			
 			break;
 		case 'delete':
+			// TO do list
+			// Add Require admin to delete
+			
 			if($_SERVER['REQUEST_METHOD'] == 'GET'){
 				// Prompt
 				// $model = Users::Get($_REQUEST['id']);
