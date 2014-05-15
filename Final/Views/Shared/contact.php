@@ -36,27 +36,44 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about.php">About</a></li>
-            <li><a href="#contact.php">Contact</a></li>
+            <li> <a href="#">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li class="active"><a href="contact.php">Contact</a></li>
           </ul>
         </div>
       </div>
     </div> 
-      <? include $view; ?>
+     	<h2> Contact</h2>
+		<table>
+			<tr>
+				<td><h4>Store Manager</h4></td>
+				<td> John Doe</td>
+			</tr>
+			<tr>
+				<td><h4>Phone</h4> </td>
+				<td>845-111-2222</td>
+			</tr>
+			<tr>
+				<td><h4>Email</h4></td>
+				<td>JDoe@TheSengStore.com</td> 
+			</tr>
+		</table>
+		<p></p>
+		
+		<h2>Customer Service</h2>
+		<table>
+			<tr>
+				<td><h4>Phone</h4> </td>
+				<td>800-888-9999</td>
+			</tr>
+			<tr>
+				<td><h4>Email</h4></td>
+				<td>CustomerService@TheSengStore.com</td> 
+			</tr>
+		</table>		
 
-    </div><!-- /.container -->
+	</div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <?
-    	if(function_exists("JavaScripts")){
-    		JavaScripts();
-    	}
-    ?>
   </body>
-</html>
+</html>	
+	

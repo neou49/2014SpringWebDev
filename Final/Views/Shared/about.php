@@ -36,27 +36,23 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about.php">About</a></li>
-            <li><a href="#contact.php">Contact</a></li>
+            <li><a href="#">Home</a></li>
+            <li class="active"><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>
       </div>
     </div> 
-      <? include $view; ?>
+     <h2> eCommerce Final Project</h2>
+	<p><b> Requirement:</b></b></p>
+	 <p>1. Hosting<br>
+       2. Database<br>
+       3. Web Design<br>
+       4. Payment System<br>
+       5. Graphic Design<br>
 
-    </div><!-- /.container -->
+	</div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <?
-    	if(function_exists("JavaScripts")){
-    		JavaScripts();
-    	}
-    ?>
   </body>
-</html>
+</html>	
+	
