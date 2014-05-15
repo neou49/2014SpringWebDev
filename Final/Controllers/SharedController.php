@@ -9,11 +9,13 @@
 	@$id = $_REQUEST['id'];
 	$layout		= '_Layout';	
 
-	if ($controllerName == 'Users')
-	{			
-		print_r($controllerName);	
-		Accounts::RequireLogin();
-	}
+	// if ($controllerName == 'Users')
+	// {			
+		// // print_r($controllerName);	
+		// Accounts::TestFunction();
+		// Accounts::RequireLogin();
+	// }
+	
 	switch ($action){
 		case 'new':
 			$view = 'edit';

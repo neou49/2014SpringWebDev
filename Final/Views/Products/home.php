@@ -127,13 +127,14 @@
 								
 					selectCategory: function(){
 						vm.currentCategory(this);
+						// All Categories
 						if (this.id == 21){
 							$.get("?action=index&format=json",null,null,'json')
 							.always(function (results) {
 								vm.itemList(results.data);
 							});
 						}else{
-					
+						// Individual Category
 						$.get("?action=index&format=json",{category_id:this.id},null,'json')
 							.always(function (results) {
 								vm.itemList(results.data);
@@ -161,9 +162,14 @@
 				
 				$.get("?action=categories&category_id=5&format=json",null,null,'json')
 					.always(function (results) {
-						vm.categoryList(results.data);
-						
+						vm.categoryList(results.data);						
 					})
+				// // Individual Category
+				/$.get("?action=index&format=json",{category_id:21},null,'json')
+					// .always(function (results) {
+						// vm.itemList(results.data);
+					// });
+			
 			});
 		</script>
 	<? } ?>

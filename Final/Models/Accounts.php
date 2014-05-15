@@ -6,7 +6,7 @@ session_start();
  * 
  */
 class Accounts {
-	public static function DoLogin($email, $password) {
+	static public function DoLogin($email, $password) {
 		$sql ="	SELECT *
 				From 2014Spring_Users U Join 2014Spring_ContactMethods CM on U.id=CM.User_Id
 				WHERE CM.Value = '$email'";
@@ -20,17 +20,16 @@ class Accounts {
 			return array('password'=>'Wrong password');
 		}
 	}
-	public static function IsLoggedIn() {
+	static public function IsLoggedIn() {
 		return (self::GetCurrentUser() != null);
 	}
-	public static function GetCurrentUser(){
+	static public function GetCurrentUser(){
 		return isset($_SESSION['User']) ? $_SESSION['User'] : null;
 	}
-	public static function RequireLogin(){
-		print_r('ueueueueueue');
-		// print_r(__FUNCTION__);
+	static public function RequireLogin(){
+		print_r('asdfasdfasdfa');
 		die();
-		
+		// print_r(__FUNCTION__);
 		if(!self::IsLoggedIn())
 		{
 			header("Location: Accounts.php?returnUrl=$_SERVER[PHP_SELF]");
@@ -38,7 +37,13 @@ class Accounts {
 		}
 	}	
 	
-	public static function IsAdmin(){
+	static public function TestFunction()
+	{
+		print_r('Test Function');
+		die();
+	}
+	
+	static public function IsAdmin(){
 		$user = self::GetCurrentUser();
 		if(!$user) return false;
 		// Admin UserType = 6
