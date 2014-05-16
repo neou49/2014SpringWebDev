@@ -9,7 +9,6 @@
 		
 		default:
 			$model = AutoCompleteBox::Get();
-
 			if($view == null) $view = 'index';
 	}
 
@@ -20,7 +19,9 @@
 			break;
 
 		default:
-			$view = __DIR__ . "/../Views/AutoCompleteBox/$view.php";	
+		
+			include __DIR__ . "/../Views/AutoCompleteBox/$view.php";	
+			// print_r($view);
 			// include __DIR__ . "/../Views/Shared/_Layout.php";
 			break;
 	}

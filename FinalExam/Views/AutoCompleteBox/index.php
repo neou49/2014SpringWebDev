@@ -3,34 +3,29 @@
 	<h2>
 		City Search
 	</h2>
-	
-	<style type="text/css">
-		body table.table .highlighted td{
-			background-color: #FFFFAA ; 
-		}
-	</style>
-	
 
 	  <label for="city">Enter City: </label>
-	  <input id="city">
-
-
+	  <input type="text" name="city" id="query" />
+	  
 	
 	<? function JavaScripts(){ ?>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.7/jquery.devbridge-autocomplete.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.autocomplete.js"></script>
 		<script type="text/javascript">		
 
-					$(function(){
-
-						var that = this;
-						$.get(that.href, function(results){
-						
-							var options, a = results.data.city;
-								options = { serviceUrl:'service/autocomplete.ashx' };
-								a = $('#city').autocomplete(options);
-							},'json')
-					});
+			$jQuery(function(){
+				var that = this;
+				$.get(that.href, {format: 'json'}, function(results){
+				
+					var options, a;					
+						options = results.data.city;
+						// document.write(options);
+						a = $('#query').autocomplete(options);
+					},'json')
+			});
 
 		</script>
 	<? } ?>

@@ -6,7 +6,7 @@
 		// Read
 		static public function Get($id = null)
 		{
-			$sql = "SELECT city FROM US_Zip_Codes Limit 0, 10
+			$sql = "SELECT city FROM US_Zip_Codes
 				   ";
 			if($id == null){
 				//	Get all records

@@ -2,10 +2,10 @@
 
 	function GetConnection()
 	{
-		$password = ‘FaceBooK’;
+		$password = 'FaceBooK';
 				
 		//$conn = mysqli_connect('localhost','neou49', $password, 'neou49_db');
-		$conn = mysqli_connect('localhost', 'plotkinm', 'FaceBooK', 'plotkinm_db');
+		$conn = mysqli_connect('localhost', 'plotkinm', $password, 'plotkinm_db');
 		
 	//	echo(mysqli_connect_error($conn));
 	//	echo 'called';

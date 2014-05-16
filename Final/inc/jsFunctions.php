@@ -33,7 +33,7 @@
 			   
 			  	$(".close").click(function(){
 			  		$(this).closest(".alert").slideUp();
-			  	})			 
+			  	})
 			  	$(".glyphicon-trash").click(function(event){
 			  		var that = this;
 			 		event.preventDefault();
